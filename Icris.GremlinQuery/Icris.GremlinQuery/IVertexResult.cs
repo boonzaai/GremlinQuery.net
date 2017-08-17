@@ -9,10 +9,11 @@ namespace Icris.GremlinQuery
     /// <summary>
     /// Represents a resultset of vertices.
     /// </summary>
-    interface IVertexResult
+    public interface IVertexResult
     {
-        IVertexResult V();
+        IVertexResult V(string id=null);
         IVertexResult has(string name, string value);
-
+        IEdgeResult outE(string label=null);
+        IEdgeResult inE(string label = null);
     }
 }

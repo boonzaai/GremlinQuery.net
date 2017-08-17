@@ -6,43 +6,114 @@ using System.Threading.Tasks;
 
 namespace Icris.GremlinQuery
 {
-    public class Query
+    public class Query:IEdgeResult,IVertexResult
     {
         string query = "g";
-        public Query has(string property, string value)
-        {
-            this.query += $".has('{property}','{value}')";
-            return this;
-        }
-        public void count()
-        {
-            this.query += ".count()";
-        }
-
-        public Query addV(string label)
-        {
-            this.query += ".addV('')";
-            return this;
-        }
-        public Query addE(string label)
-        {
-
-        }
-
-        public Query V()
-        {
-            this.query += ".V()";
-            return this;
-        }
-        public Query E()
-        {
-            this.query += ".E()";
-            return this;
-        }
+        
 
         public override string ToString()
         {
             return query;
+        }
+
+        public IVertexResult V(string id = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        IVertexResult IVertexResult.has(string name, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult outE(string label = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult inE(string label = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult E(string id = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult property(string name, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult to(IVertexResult goal)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult from(IVertexResult source)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult hasLabel(string label)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult hasId(string label)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEdgeResult IEdgeResult.has(string name, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+        public IVertexResult outV(string label = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult dedup()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void drop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void values()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEdgeResult limit(int limit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVertexResult inV(string label = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void count()
+        {
+            throw new NotImplementedException();
+        }
+        public IEdgeResult addE(string label=null)
+        {
+            throw new NotImplementedException();
+        }
+        public IVertexResult addV(string label = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

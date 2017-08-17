@@ -9,20 +9,21 @@ namespace Icris.GremlinQuery
     /// <summary>
     /// Represents a resultset of edges.
     /// </summary>
-    interface IEdgeResult
+    public interface IEdgeResult
     {
-        IEdgeResult E();
+        IEdgeResult E(string id = null);
         IEdgeResult property(string name, string value);
         IEdgeResult to(IVertexResult goal);
         IEdgeResult from(IVertexResult source);
         IEdgeResult hasLabel(string label);
         IEdgeResult hasId(string label);
-        IEdgeResult has(string name, string value);
-        IVertexResult inV();
-        IVertexResult outV();
+        IEdgeResult has(string name, string comparerOrValue);
+        IVertexResult inV(string label=null);
+        IVertexResult outV(string label=null);
         void count();
         IEdgeResult dedup();
         void drop();
+        void values();
         IEdgeResult limit(int limit);
     }
 }
