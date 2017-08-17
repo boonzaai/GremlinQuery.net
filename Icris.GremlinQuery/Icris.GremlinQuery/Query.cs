@@ -24,6 +24,10 @@ namespace Icris.GremlinQuery
             this.query += ".addV('')";
             return this;
         }
+        public Query addE(string label)
+        {
+
+        }
 
         public Query V()
         {
