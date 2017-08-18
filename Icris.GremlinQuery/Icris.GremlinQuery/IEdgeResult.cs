@@ -19,11 +19,7 @@ namespace Icris.GremlinQuery
         IEdgeResult hasId(string label);
         IEdgeResult has(string name, string comparerOrValue);
         IVertexResult inV(string label=null);
-        IVertexResult outV(string label=null);
-        void count();
-        IEdgeResult dedup();
-        void drop();
-        void values();
+        IVertexResult outV(string label=null);        
         IEdgeResult limit(int limit);
     }
 }

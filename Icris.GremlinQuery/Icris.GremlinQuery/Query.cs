@@ -1,147 +1,253 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Icris.GremlinQuery
 {
-    public class Query:IEdgeResult,IVertexResult
+    public class Query : IEdgeResult, IVertexResult, IGroupResult
     {
         string query = "g";
-        
+
         public override string ToString()
         {
             return query;
         }
-
-        public IVertexResult V(int id)
+        #region general statements
+        public Query drop()
         {
-            throw new NotImplementedException();
+            this.query += ".drop()";
+            return this;
         }
-        public IVertexResult V(string id = null)
+        public Query dedup()
         {
-            throw new NotImplementedException();
+            this.query += ".dedup()";
+            return this;
+        }
+        public Query count()
+        {
+            this.query += ".count()";
+            return this;
+        }
+        public IVertexResult mean()
+        {
+            this.query += ".mean()";
+            return this;
+        }
+        public Query addV()
+        {
+            this.query += ".addV()";
+            return this;
+        }
+        public Query addE()
+        {
+            this.query += ".addE()";
+            return this;
+        }
+        public Query addV(string label)
+        {
+            this.query += $".addV({label})";
+            return this;
+        }
+        public Query addE(string label)
+        {
+            this.query += $".addE({label})";
+            return this;
         }
 
-        IVertexResult IVertexResult.has(string name, string value)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public IEdgeResult outE(string label = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEdgeResult inE(string label = null)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region interfaces implementation
         public IEdgeResult E(string id = null)
         {
-            throw new NotImplementedException();
+            if (id != null)
+                this.query += $"E({id})";
+            else
+                this.query += "E()";
+            return this;
         }
 
         public IEdgeResult property(string name, string value)
         {
-            throw new NotImplementedException();
+            this.query += $".property({name},{value})";
+            return this;
         }
 
         public IEdgeResult to(IVertexResult goal)
         {
-            throw new NotImplementedException();
+            this.query += $".to({goal.ToString()})";
+            return this;
         }
 
         public IEdgeResult from(IVertexResult source)
         {
-            throw new NotImplementedException();
+            this.query += $".from({source.ToString()})";
+            return this;
         }
 
         public IEdgeResult hasLabel(string label)
         {
-            throw new NotImplementedException();
+            this.query += $".hasLabel({label})";
+            return this;
         }
 
         public IEdgeResult hasId(string label)
         {
-            throw new NotImplementedException();
+            this.query += $".hasId({label})";
+            return this;
         }
 
-        IEdgeResult IEdgeResult.has(string name, string value)
+        public IEdgeResult has(string name, string comparerOrValue)
         {
-            throw new NotImplementedException();
-        }
-
-        
-
-        public IVertexResult outV(string label = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEdgeResult dedup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void drop()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void values()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEdgeResult limit(int limit)
-        {
-            throw new NotImplementedException();
+            this.query += $".has({name},{comparerOrValue})";
+            return this;
         }
 
         public IVertexResult inV(string label = null)
         {
-            throw new NotImplementedException();
+            if (label != null)
+                this.query += $".inV({label})";
+            else
+                this.query += ".inV()";
+            return this;
         }
 
-        public void count()
+        public IVertexResult outV(string label = null)
         {
-            throw new NotImplementedException();
+            if (label != null)
+                this.query += $".outV({label})";
+            else
+                this.query += ".outV()";
+            return this;
         }
-        public IEdgeResult addE(string label=null)
+
+        public IEdgeResult limit(int limit)
         {
-            throw new NotImplementedException();
+            this.query += $".limit({limit})";
+            return this;
         }
-        public IVertexResult addV(string label = null)
+
+        public IVertexResult V(string id = null)
         {
-            throw new NotImplementedException();
-        }       
+            if (id != null)
+                this.query += $".V({id})";
+            else
+                this.query += ".V()";
+            return this;
+        }
+
+        public IVertexResult V(int id)
+        {
+            this.query += $".V({id})";
+            return this;
+        }
+
+        IVertexResult IVertexResult.has(string name, string value)
+        {
+            this.query += $".has({name},{value})";
+            return this;
+        }
+
+        public IEdgeResult outE(string label = null)
+        {
+            if (label != null)
+                this.query += $".outE({label})";
+            else
+                this.query += ".outE()";
+            return this;
+
+        }
+
+        public IEdgeResult inE(string label = null)
+        {
+            if (label != null)
+                this.query += $".inE({label})";
+            else
+                this.query += ".inE()";
+            return this;
+        }
 
         IVertexResult IVertexResult.property(string name, string value)
         {
-            throw new NotImplementedException();
+            this.query += $".property({name},{value})";
+            return this;
         }
 
         public IVertexResult property(string name, int value)
         {
-            throw new NotImplementedException();
+            this.query += $".property({name},{value})";
+            return this;
         }
 
         public IVertexResult property(string name, double value)
         {
-            throw new NotImplementedException();
+            this.query += $".property({name},{value.ToString(CultureInfo.InvariantCulture)})";
+            return this;
         }
 
         public IVertexResult values(params string[] fields)
         {
-            throw new NotImplementedException();
+            this.query += $".values({fields.Aggregate((a,b)=> $"{a},{b}")})";
+            return this;
+        }
+
+        public IVertexResult select(params string[] names)
+        {
+            this.query += $".select({names.Aggregate((a, b) => $"{a},{b}")})";
+            return this;
         }
 
         public IVertexResult @out(string label = null)
         {
-            throw new NotImplementedException();
+            if (label != null)
+                this.query += $".out({label})";
+            else
+                this.query += ".out()";
+            return this;
         }
+
+        public IVertexResult @in(string label = null)
+        {
+            if (label != null)
+                this.query += $".in({label})";
+            else
+                this.query += ".in()";
+            return this;
+        }
+
+        public IVertexResult @as(string name)
+        {
+            this.query += $".as({name})";
+            return this;
+        }
+
+        public IGroupResult group()
+        {
+            this.query += ".group()";
+            return this;
+        }
+
+        public IVertexResult by(string label)
+        {
+            this.query += $".by({label})";
+            return this;    
+        }
+
+        public IGroupResult by(property field)
+        {
+            this.query += $".by({field})";
+            return this;
+        }
+
+        IGroupResult IGroupResult.by(string field)
+        {
+            this.query += $".by({field})";
+            return this;
+        }
+        #endregion
+
+
     }
 }

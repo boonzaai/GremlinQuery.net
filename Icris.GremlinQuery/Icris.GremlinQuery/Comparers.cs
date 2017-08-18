@@ -32,6 +32,10 @@ namespace Icris.GremlinQuery
         {
             return $"eq({value})";
         }
+        public static string within(params string[] values)
+        {
+            return $"within({values.Select(x => $"{x}").Aggregate((a, b) => a + "," + b) })";
+        }
     }
 
 }
