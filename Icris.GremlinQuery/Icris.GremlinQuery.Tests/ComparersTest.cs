@@ -12,9 +12,19 @@ namespace Icris.GremlinQuery.Tests
     public class ComparersTest
     {
         [TestMethod]
-        public void TestGt()
+        public void Comparers_TestGt()
         {
             Assert.AreEqual("gt(5)", gt("5"));
+        }
+        [TestMethod]
+        public void Comparers_TestLt()
+        {
+            Assert.AreEqual("lt(5)", lt("5"));
+        }
+        [TestMethod]
+        public void Comparers_TestEq()
+        {
+            Assert.AreEqual("eq(5)", eq("5"));
         }
     }
 }

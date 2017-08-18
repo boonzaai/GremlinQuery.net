@@ -10,12 +10,15 @@ namespace Icris.GremlinQuery
     {
         string query = "g";
         
-
         public override string ToString()
         {
             return query;
         }
 
+        public IVertexResult V(int id)
+        {
+            throw new NotImplementedException();
+        }
         public IVertexResult V(string id = null)
         {
             throw new NotImplementedException();
@@ -112,6 +115,31 @@ namespace Icris.GremlinQuery
             throw new NotImplementedException();
         }
         public IVertexResult addV(string label = null)
+        {
+            throw new NotImplementedException();
+        }       
+
+        IVertexResult IVertexResult.property(string name, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVertexResult property(string name, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVertexResult property(string name, double value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVertexResult values(params string[] fields)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVertexResult @out(string label = null)
         {
             throw new NotImplementedException();
         }

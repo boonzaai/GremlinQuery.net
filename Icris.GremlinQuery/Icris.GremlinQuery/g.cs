@@ -12,6 +12,10 @@ namespace Icris.GremlinQuery
         {
             return new Query().V(id);
         }
+        public static IVertexResult V(int id)
+        {
+            return new Query().V(id);
+        }
         public static IEdgeResult E(string id = null)
         {
             return new Query().E(id);
