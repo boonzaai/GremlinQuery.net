@@ -15,6 +15,7 @@ namespace Icris.GremlinQuery
         IVertexResult V(string id = null);
         IVertexResult V(int id);
         IVertexResult has(string name, string value);
+        IVertexResult has(string name, Comparer comparer);
         IEdgeResult outE(string label = null);
         IEdgeResult inE(string label = null);
         IVertexResult property(string name, string value);

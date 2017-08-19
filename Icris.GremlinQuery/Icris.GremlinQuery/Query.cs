@@ -48,12 +48,12 @@ namespace Icris.GremlinQuery
         }
         public Query addV(string label)
         {
-            this.query += $".addV({label})";
+            this.query += $".addV('{label}')";
             return this;
         }
         public Query addE(string label)
         {
-            this.query += $".addE({label})";
+            this.query += $".addE('{label}')";
             return this;
         }
 
@@ -63,7 +63,7 @@ namespace Icris.GremlinQuery
         public IEdgeResult E(string id = null)
         {
             if (id != null)
-                this.query += $"E({id})";
+                this.query += $"E('{id}')";
             else
                 this.query += "E()";
             return this;
@@ -71,7 +71,7 @@ namespace Icris.GremlinQuery
 
         public IEdgeResult property(string name, string value)
         {
-            this.query += $".property({name},{value})";
+            this.query += $".property('{name}','{value}')";
             return this;
         }
 
@@ -89,26 +89,27 @@ namespace Icris.GremlinQuery
 
         public IEdgeResult hasLabel(string label)
         {
-            this.query += $".hasLabel({label})";
+            this.query += $".hasLabel('{label}')";
             return this;
         }
 
         public IEdgeResult hasId(string label)
         {
-            this.query += $".hasId({label})";
+            this.query += $".hasId('{label}')";
             return this;
         }
 
         public IEdgeResult has(string name, string comparerOrValue)
         {
-            this.query += $".has({name},{comparerOrValue})";
+            this.query += $".has('{name}','{comparerOrValue}')";
             return this;
         }
+
 
         public IVertexResult inV(string label = null)
         {
             if (label != null)
-                this.query += $".inV({label})";
+                this.query += $".inV('{label}')";
             else
                 this.query += ".inV()";
             return this;
@@ -117,7 +118,7 @@ namespace Icris.GremlinQuery
         public IVertexResult outV(string label = null)
         {
             if (label != null)
-                this.query += $".outV({label})";
+                this.query += $".outV('{label}')";
             else
                 this.query += ".outV()";
             return this;
@@ -132,7 +133,7 @@ namespace Icris.GremlinQuery
         public IVertexResult V(string id = null)
         {
             if (id != null)
-                this.query += $".V({id})";
+                this.query += $".V('{id}')";
             else
                 this.query += ".V()";
             return this;
@@ -146,14 +147,19 @@ namespace Icris.GremlinQuery
 
         IVertexResult IVertexResult.has(string name, string value)
         {
-            this.query += $".has({name},{value})";
+            this.query += $".has('{name}','{value}')";
+            return this;
+        }
+        public IVertexResult has(string name, Comparer comparer)
+        {
+            this.query += $".has('{name}',{comparer})";
             return this;
         }
 
         public IEdgeResult outE(string label = null)
         {
             if (label != null)
-                this.query += $".outE({label})";
+                this.query += $".outE('{label}')";
             else
                 this.query += ".outE()";
             return this;
@@ -163,7 +169,7 @@ namespace Icris.GremlinQuery
         public IEdgeResult inE(string label = null)
         {
             if (label != null)
-                this.query += $".inE({label})";
+                this.query += $".inE('{label}')";
             else
                 this.query += ".inE()";
             return this;
@@ -171,38 +177,38 @@ namespace Icris.GremlinQuery
 
         IVertexResult IVertexResult.property(string name, string value)
         {
-            this.query += $".property({name},{value})";
+            this.query += $".property('{name}','{value}')";
             return this;
         }
 
         public IVertexResult property(string name, int value)
         {
-            this.query += $".property({name},{value})";
+            this.query += $".property('{name}',{value})";
             return this;
         }
 
         public IVertexResult property(string name, double value)
         {
-            this.query += $".property({name},{value.ToString(CultureInfo.InvariantCulture)})";
+            this.query += $".property('{name}',{value.ToString(CultureInfo.InvariantCulture)})";
             return this;
         }
 
         public IVertexResult values(params string[] fields)
         {
-            this.query += $".values({fields.Aggregate((a,b)=> $"{a},{b}")})";
+            this.query += $".values({fields.Select(x => $"'{x}'").Aggregate((a, b) => a + "," + b) })";
             return this;
         }
 
         public IVertexResult select(params string[] names)
         {
-            this.query += $".select({names.Aggregate((a, b) => $"{a},{b}")})";
+            this.query += $".select({names.Select(x => $"'{x}'").Aggregate((a, b) => a + "," + b) })";
             return this;
         }
 
         public IVertexResult @out(string label = null)
         {
             if (label != null)
-                this.query += $".out({label})";
+                this.query += $".out('{label}')";
             else
                 this.query += ".out()";
             return this;
@@ -211,7 +217,7 @@ namespace Icris.GremlinQuery
         public IVertexResult @in(string label = null)
         {
             if (label != null)
-                this.query += $".in({label})";
+                this.query += $".in('{label}')";
             else
                 this.query += ".in()";
             return this;
@@ -219,7 +225,7 @@ namespace Icris.GremlinQuery
 
         public IVertexResult @as(string name)
         {
-            this.query += $".as({name})";
+            this.query += $".as('{name}')";
             return this;
         }
 
@@ -231,7 +237,7 @@ namespace Icris.GremlinQuery
 
         public IVertexResult by(string label)
         {
-            this.query += $".by({label})";
+            this.query += $".by('{label}')";
             return this;    
         }
 
@@ -243,9 +249,11 @@ namespace Icris.GremlinQuery
 
         IGroupResult IGroupResult.by(string field)
         {
-            this.query += $".by({field})";
+            this.query += $".by('{field}')";
             return this;
         }
+
+        
         #endregion
 
 

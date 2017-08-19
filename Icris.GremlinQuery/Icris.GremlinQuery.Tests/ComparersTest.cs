@@ -29,7 +29,7 @@ namespace Icris.GremlinQuery.Tests
         [TestMethod]
         public void Comparers_TestWithin()
         {
-            Assert.AreEqual("within('vadas','marko')", within("'vadas'", "'marko'"));
+            Assert.AreEqual("within('vadas','marko')", within("vadas", "marko"));
         }
     }
 }

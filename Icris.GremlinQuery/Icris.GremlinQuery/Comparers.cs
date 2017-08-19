@@ -6,35 +6,51 @@ using System.Threading.Tasks;
 
 namespace Icris.GremlinQuery
 {
+    public class Comparer
+    {
+        string comparer = "";
+        public Comparer(string comparer)
+        {
+            this.comparer = comparer;
+        }
+        public static implicit operator string(Comparer d)
+        {
+            return d.ToString();
+        }
+        public override string ToString()
+        {
+            return this.comparer;
+        }
+    }
     public static class Comparers
     {
-        public static string gt(string value)
+        public static Comparer gt(string value)
         {
-            return $"gt('{value}')";
+            return new Comparer($"gt('{value}')");
         }
-        public static string lt(string value)
+        public static Comparer lt(string value)
         {
-            return $"lt('{value}')";
+            return new Comparer($"lt('{value}')");
         }
-        public static string eq(string value)
+        public static Comparer eq(string value)
         {
-            return $"eq('{value}')";
+            return new Comparer($"eq('{value}')");
         }
-        public static string gt(int value)
+        public static Comparer gt(int value)
         {
-            return $"gt({value})";
+            return new GremlinQuery.Comparer($"gt({value})");
         }
-        public static string lt(int value)
+        public static Comparer lt(int value)
         {
-            return $"lt({value})";
+            return new Comparer($"lt({value})");
         }
-        public static string eq(int value)
+        public static Comparer eq(int value)
         {
-            return $"eq({value})";
+            return new Comparer($"eq({value})");
         }
-        public static string within(params string[] values)
+        public static Comparer within(params string[] values)
         {
-            return $"within({values.Select(x => $"{x}").Aggregate((a, b) => a + "," + b) })";
+            return new Comparer($"within({values.Select(x => $"'{x}'").Aggregate((a, b) => a + "," + b) })");
         }
     }
 
