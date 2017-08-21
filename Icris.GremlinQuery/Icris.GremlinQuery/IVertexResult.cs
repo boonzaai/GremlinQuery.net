@@ -29,6 +29,8 @@ namespace Icris.GremlinQuery
         IGroupResult group();
         IVertexResult by(string label);
         IVertexResult mean();
+        Query addE(string label = null);
+        Query dedup();
         
     }
     public enum property

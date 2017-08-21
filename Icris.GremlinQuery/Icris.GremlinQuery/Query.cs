@@ -10,50 +10,75 @@ namespace Icris.GremlinQuery
     public class Query : IEdgeResult, IVertexResult, IGroupResult
     {
         string query = "g";
-
+        /// <summary>
+        /// Returns the full Gremlin Query composed from this statement
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return query;
         }
         #region general statements
+        /// <summary>
+        /// Drop the vertices/edges matching this resultset
+        /// </summary>
+        /// <returns></returns>
         public Query drop()
         {
             this.query += ".drop()";
             return this;
         }
+        /// <summary>
+        /// De-duplify this resultset (a.k.a. DISTINCT)
+        /// </summary>
+        /// <returns></returns>
         public Query dedup()
         {
             this.query += ".dedup()";
             return this;
         }
+        /// <summary>
+        /// Count the number of vertices/edges in this resultset.
+        /// </summary>
+        /// <returns></returns>
         public Query count()
         {
             this.query += ".count()";
             return this;
         }
+        /// <summary>
+        /// Get the mean value of this resultset (a.k.a. AVERAGE)
+        /// </summary>
+        /// <returns></returns>
         public IVertexResult mean()
         {
             this.query += ".mean()";
             return this;
         }
-        public Query addV()
+        /// <summary>
+        /// Add a vertex to the graph. If you want to add more properties to this vertex, add .property() statements after this one.
+        /// </summary>
+        /// <param name="label">optional label</param>
+        /// <returns></returns>
+        public Query addV(string label = null)
         {
-            this.query += ".addV()";
+            if (label == null)
+                this.query += ".addV()";
+            else
+                this.query += $".addV('{label}')";
             return this;
         }
-        public Query addE()
+        /// <summary>
+        /// Add an edge to the graph. If you want to add more properties to this edge, add .property() statements after this one.
+        /// </summary>
+        /// <param name="label">optional label</param>
+        /// <returns></returns>
+        public Query addE(string label = null)
         {
-            this.query += ".addE()";
-            return this;
-        }
-        public Query addV(string label)
-        {
-            this.query += $".addV('{label}')";
-            return this;
-        }
-        public Query addE(string label)
-        {
-            this.query += $".addE('{label}')";
+            if (label == null)
+                this.query += ".addE()";
+            else
+                this.query += $".addE('{label}')";
             return this;
         }
 
@@ -238,7 +263,7 @@ namespace Icris.GremlinQuery
         public IVertexResult by(string label)
         {
             this.query += $".by('{label}')";
-            return this;    
+            return this;
         }
 
         public IGroupResult by(property field)
@@ -253,7 +278,8 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        
+
+
         #endregion
 
 
