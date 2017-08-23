@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>GremlinQueryPackage</id>
-    <version>0.2</version>
+    <version>0.2.1</version>
     <title>GremlinQuery.net</title>
     <authors>Icris</authors>
     <owners>Icris</owners>
@@ -11,11 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/boonzaai/GremlinQuery.net/master/Icris.GremlinQuery/Icris.GremlinQuery/final_logo_owlonly.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A DSL for generating Gremlin Queries inside your C# code.</description>
-    <releaseNotes>0.2 release. Added code completion comments, test cases, etc.</releaseNotes>
+    <releaseNotes>Included intellisense XML documentation file in package.</releaseNotes>
     <copyright>Copyright 2017 http://www.icris.nl</copyright>
     <tags>cosmosdb DSL Gremlin Graph Query</tags>
   </metadata>
   <files>
     <file src="bin\release\Icris.GremlinQuery.dll" target="lib\Icris.GremlinQuery.dll" />
+    <file src="bin\release\Icris.GremlinQuery.xml" target="lib\Icris.GremlinQuery.xml" />
   </files>
 </package>
