@@ -19,7 +19,7 @@ namespace Icris.GremlinQuery
         IVertexResult hasLabel(string label);
         IEdgeResult outE(string label = null);
         IEdgeResult inE(string label = null);
-        ITraversalResult bothE(List<string> labels = null);
+        IEdgeResult bothE(List<string> labels = null);
         IVertexResult property(string name, string value);
         IVertexResult property(string name, int value);
         IVertexResult property(string name, double value);
@@ -31,17 +31,18 @@ namespace Icris.GremlinQuery
         IGroupResult group();
         IVertexResult by(string label);
         IVertexResult mean();
-        ITraversalResult path();
+        IVertexResult path();
         /// <summary>
         /// Limits the returned paths
         /// </summary>
         /// <param name="pathLimit">Maximum number of paths to return</param>
         /// <returns></returns>
+        IVertexResult limit(int pathLimit);
         IRepeater repeat(IParameterResult parameter);
-        IVertexResult count();
         Query addE(string label = null);
         Query drop();
         Query dedup();
+        IVertexResult count();
 
     }
     public enum property
