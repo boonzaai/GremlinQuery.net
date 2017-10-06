@@ -21,6 +21,6 @@ namespace Icris.GremlinQuery
         IVertexResult inV(string label=null);
         IVertexResult outV(string label=null);        
         IEdgeResult limit(int limit);
-        IVertexResult where(IParameterResult parameter);
+        Query drop();
     }
 }

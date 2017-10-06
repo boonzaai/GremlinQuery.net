@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Icris.GremlinQuery
 {
-    public class Query : IEdgeResult, IVertexResult, IGroupResult, IRepeater
+    public class Query : IEdgeResult, IVertexResult, IGroupResult, IRepeater, ITraversalResult
     {
         string query = "g";
         /// <summary>
@@ -281,7 +281,7 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IVertexResult path()
+        public ITraversalResult path()
         {
             this.query += ".path()";
             return this;
@@ -294,14 +294,14 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IVertexResult where(IParameterResult parameter)
+        public IEdgeResult where(IParameterResult parameter)
         {
             this.query += $".where({parameter})";
 
             return this;
         }
 
-        IVertexResult IVertexResult.limit(int pathLimit)
+        ITraversalResult ITraversalResult.limit(int pathLimit)
         {
             this.query += $".limit({pathLimit})";
             return this;
@@ -319,7 +319,13 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IEdgeResult bothE(List<string> labels)
+        Query ITraversalResult.count()
+        {
+            this.query += ".count()";
+            return this;
+        }
+
+        public ITraversalResult bothE(List<string> labels)
         {
             if (labels == null)
                 this.query += ".bothE()";
