@@ -100,46 +100,5 @@ namespace Icris.GremlinQuery.Tests
 
 
         }
-
-        [TestMethod]
-        public void Test()
-        {
-            Assert.AreEqual(
-                "g.V('organizationid').repeat(out().simplePath()).until(hasId('patient4')).path().limit(1)",
-                g.V("organizationid").repeat(Parameter.@out().simplePath()).until(Parameter.hasId("patient4")).path().limit(1).ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid').repeat(out().simplePath()).until(hasId('patient4')).path().count(local)",
-                g.V("organizationid").repeat(Parameter.@out().simplePath()).until(Parameter.hasId("patient4")).path().count(Scope.local).ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid').outE().inV()",
-                g.V("organizationid").outE().inV().ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid')",
-                g.V("organizationid").ToString()
-                );
-            Assert.AreEqual(
-                "g.addV('organizationid').property('id','123')",
-                g.addV("organizationid").property("id", "123").ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid').addE('relationshipType').to(g.V('staffmemberid'))",
-                g.V("organizationid").addE("relationshipType").to(g.V("staffmemberid")).ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid').bothE().where(otherV().hasLabel('staffmember'))",
-                g.V("organizationid").bothE().where(Parameter.otherV().hasLabel("staffmember")).ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid').bothE().where(otherV().hasId('staffmemberid')).drop()",
-                g.V("organizationid").bothE().where(Parameter.otherV().hasId("staffmemberid")).drop().ToString()
-                );
-            Assert.AreEqual(
-                "g.V('organizationid').bothE().where(otherV().hasId('1234')).property('label','newLabel')",
-                g.V("organizationid").bothE().where(Parameter.otherV().hasId("1234")).property("label", "newLabel").ToString()
-                );
-        }
     }
 }
