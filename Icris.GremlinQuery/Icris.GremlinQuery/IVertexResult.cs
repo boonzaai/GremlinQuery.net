@@ -97,7 +97,7 @@ namespace Icris.GremlinQuery
         /// <summary>
         /// Used for looping over a traversal given some break predicate
         /// </summary>
-        IRepeater repeat(IParameterResult parameter);
+        IRepeater repeat(IArgumentResult parameter);
         /// <summary>
         /// Adds edge to graph
         /// </summary>

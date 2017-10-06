@@ -9,35 +9,35 @@ namespace Icris.GremlinQuery
     /// <summary>
     /// Query results used as parameters in other queries
     /// </summary>
-    public interface IParameterResult
+    public interface IArgumentResult
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        IParameterResult hasId(string id);
+        IArgumentResult hasId(string id);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        IParameterResult hasId(int id);
+        IArgumentResult hasId(int id);
         /// <summary>
         /// Remove the traverser if its element does not have the label
         /// </summary>
-        IParameterResult hasLabel(string label);
+        IArgumentResult hasLabel(string label);
         /// <summary>
         /// Move to the vertex that was not the vertex that was moved from
         /// </summary>
-        IParameterResult otherV();
+        IArgumentResult otherV();
         /// <summary>
         /// Performs an out going traversal step
         /// </summary>
-        IParameterResult @out();
+        IArgumentResult @out();
         /// <summary>
         /// Returns the history of the traversed path without repeating traversals
         /// </summary>
-        ParameterQuery simplePath();
+        ArgumentQuery simplePath();
     }
 }

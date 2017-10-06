@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Icris.GremlinQuery
 {
-    public class ParameterQuery : IParameterResult
+    public class ArgumentQuery : IArgumentResult
     {
         string query = "";
 
@@ -15,35 +15,35 @@ namespace Icris.GremlinQuery
             return query.TrimStart('.');
         }
 
-        public IParameterResult hasId(string id)
+        public IArgumentResult hasId(string id)
         {
             query += $".hasId('{id}')";
 
             return this;
         }
 
-        public IParameterResult hasId(int id)
+        public IArgumentResult hasId(int id)
         {
             query += $".hasId({id})";
 
             return this;
         }
 
-        public IParameterResult hasLabel(string label)
+        public IArgumentResult hasLabel(string label)
         {
             query += $".hasLabel('{label}')";
 
             return this;
         }
 
-        public IParameterResult otherV()
+        public IArgumentResult otherV()
         {
             query += ".otherV()";
 
             return this;
         }
 
-        public IParameterResult @out()
+        public IArgumentResult @out()
         {
             query += ".out()";
 
@@ -54,7 +54,7 @@ namespace Icris.GremlinQuery
         /// must be last in chain
         /// </summary>
         /// <returns></returns>
-        public ParameterQuery simplePath()
+        public ArgumentQuery simplePath()
         {
             this.query += ".simplePath()";
 

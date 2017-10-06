@@ -44,11 +44,11 @@
     <Compile Include="Comparers.cs" />
     <Compile Include="g.cs" />
     <Compile Include="IEdgeResult.cs" />
-    <Compile Include="IParameterResult.cs" />
+    <Compile Include="IArgumentResult.cs" />
     <Compile Include="IRepeater.cs" />
     <Compile Include="IVertexResult.cs" />
-    <Compile Include="Parameter.cs" />
-    <Compile Include="ParameterQuery.cs" />
+    <Compile Include="Argument.cs" />
+    <Compile Include="ArgumentQuery.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

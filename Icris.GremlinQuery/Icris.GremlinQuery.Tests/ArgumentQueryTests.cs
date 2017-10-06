@@ -5,18 +5,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Icris.GremlinQuery.Tests
 {
-    /// <summary>
-    /// Summary description for ParameterQueryTests
-    /// </summary>
     [TestClass]
-    public class ParameterQueryTests
+    public class ArgumentQueryTests
     {
         [TestMethod]
         public void ParameterQuery_QueryHasNoPeriods()
         {
             Assert.AreEqual(
                 "out()",
-                Parameter.@out().ToString()
+                Argument.@out().ToString()
                 );
         }
         
@@ -25,7 +22,7 @@ namespace Icris.GremlinQuery.Tests
         {
             Assert.AreEqual(
                 "out().simplePath()",
-                Parameter.@out().simplePath().ToString()
+                Argument.@out().simplePath().ToString()
                 );
         }
 
@@ -34,7 +31,7 @@ namespace Icris.GremlinQuery.Tests
         {
             Assert.AreEqual(
                 "g.V('123').repeat(out().simplePath()).until(hasId('5')).path().limit(1)",
-                g.V("123").repeat(Parameter.@out().simplePath()).until(Parameter.hasId("5")).path().limit(1).ToString()
+                g.V("123").repeat(Argument.@out().simplePath()).until(Argument.hasId("5")).path().limit(1).ToString()
                 );
         }
     }

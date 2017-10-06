@@ -54,7 +54,7 @@ namespace Icris.GremlinQuery
         /// <summary>
         /// filters the traversal based on the given condition
         /// </summary>
-        IEdgeResult where(IParameterResult condition);
+        IEdgeResult where(IArgumentResult condition);
         /// <summary>
         /// Removed the current edge from the graph
         /// </summary>

@@ -16,7 +16,7 @@ namespace Icris.GremlinQuery
         /// </summary>
         /// <param name="condition"></param>
         /// <returns></returns>
-        IVertexResult until(IParameterResult condition);
+        IVertexResult until(IArgumentResult condition);
         /// <summary>
         /// Will move through verticies and edges the supplied number of times
         /// </summary>

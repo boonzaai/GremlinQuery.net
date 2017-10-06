@@ -275,7 +275,7 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IVertexResult until(IParameterResult condition)
+        public IVertexResult until(IArgumentResult condition)
         {
             this.query += $".until({condition})";
             return this;
@@ -287,14 +287,14 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IRepeater repeat(IParameterResult parameter)
+        public IRepeater repeat(IArgumentResult parameter)
         {
             this.query += $".repeat({parameter})";
 
             return this;
         }
 
-        public IEdgeResult where(IParameterResult condition)
+        public IEdgeResult where(IArgumentResult condition)
         {
             this.query += $".where({condition})";
 
