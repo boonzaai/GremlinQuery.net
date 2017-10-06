@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AdvancedQuerySet.cs" />
     <Compile Include="ComparersTest.cs" />
+    <Compile Include="ParameterQueryTests.cs" />
     <Compile Include="QueryTestSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
