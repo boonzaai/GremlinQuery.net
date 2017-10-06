@@ -109,8 +109,8 @@ namespace Icris.GremlinQuery.Tests
                 g.V("organizationid").repeat(Parameter.@out().simplePath()).until(Parameter.hasId("patient4")).path().limit(1).ToString()
                 );
             Assert.AreEqual(
-                "g.V('organizationid').repeat(out().simplePath()).until(hasId('patient4')).path().count()",
-                g.V("organizationid").repeat(Parameter.@out().simplePath()).until(Parameter.hasId("patient4")).path().count().ToString()
+                "g.V('organizationid').repeat(out().simplePath()).until(hasId('patient4')).path().count(local)",
+                g.V("organizationid").repeat(Parameter.@out().simplePath()).until(Parameter.hasId("patient4")).path().count(Scope.local).ToString()
                 );
             Assert.AreEqual(
                 "g.V('organizationid').outE().inV()",

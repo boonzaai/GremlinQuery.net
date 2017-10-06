@@ -113,7 +113,7 @@ namespace Icris.GremlinQuery
         /// <summary>
         /// Returns the count from the traversal
         /// </summary>
-        IVertexResult count();
+        IVertexResult count(Scope scope = Scope.global);
 
     }
 
@@ -121,6 +121,12 @@ namespace Icris.GremlinQuery
     {
         label,
         id
+    }
+
+    public enum Scope
+    {
+        global,
+        local
     }
 
     public interface IGroupResult

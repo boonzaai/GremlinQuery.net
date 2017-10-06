@@ -313,9 +313,12 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IVertexResult count()
+        public IVertexResult count(Scope scope = Scope.global)
         {
-            this.query += ".count()";
+            if (scope == Scope.global)
+                this.query += ".count()";
+            else
+                this.query += $".count({scope})";
             return this;
         }
 
