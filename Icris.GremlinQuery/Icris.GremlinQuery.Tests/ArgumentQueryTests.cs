@@ -9,7 +9,7 @@ namespace Icris.GremlinQuery.Tests
     public class ArgumentQueryTests
     {
         [TestMethod]
-        public void ParameterQuery_QueryHasNoPeriods()
+        public void ArgumentQuery_QueryHasNoPeriods()
         {
             Assert.AreEqual(
                 "out()",
@@ -18,7 +18,7 @@ namespace Icris.GremlinQuery.Tests
         }
         
         [TestMethod]
-        public void ParameterQuery_QueryChainsHavePeriods()
+        public void ArgumentQuery_QueryChainsHavePeriods()
         {
             Assert.AreEqual(
                 "out().simplePath()",
@@ -27,7 +27,7 @@ namespace Icris.GremlinQuery.Tests
         }
 
         [TestMethod]
-        public void ParameterQuery_QueryBuiltProperlyInArgument()
+        public void ArgumentQuery_QueryBuiltProperlyInArgument()
         {
             Assert.AreEqual(
                 "g.V('123').repeat(out().simplePath()).until(hasId('5')).path().limit(1)",
