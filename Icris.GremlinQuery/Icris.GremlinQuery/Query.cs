@@ -294,9 +294,9 @@ namespace Icris.GremlinQuery
             return this;
         }
 
-        public IEdgeResult where(IParameterResult parameter)
+        public IEdgeResult where(IParameterResult condition)
         {
-            this.query += $".where({parameter})";
+            this.query += $".where({condition})";
 
             return this;
         }
