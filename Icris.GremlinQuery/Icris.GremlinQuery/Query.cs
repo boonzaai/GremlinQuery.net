@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Icris.GremlinQuery
 {
-    public class Query : IEdgeResult, IVertexResult, IGroupResult
+    public class Query : IEdgeResult, IVertexResult, IGroupResult, IRepeater
     {
         string query = "g";
         /// <summary>
@@ -35,15 +35,6 @@ namespace Icris.GremlinQuery
         public Query dedup()
         {
             this.query += ".dedup()";
-            return this;
-        }
-        /// <summary>
-        /// Count the number of vertices/edges in this resultset.
-        /// </summary>
-        /// <returns></returns>
-        public Query count()
-        {
-            this.query += ".count()";
             return this;
         }
         /// <summary>
@@ -278,6 +269,74 @@ namespace Icris.GremlinQuery
             return this;
         }
 
+        IVertexResult IVertexResult.hasLabel(string label)
+        {
+            this.query += $".hasLabel('{label}')";
+            return this;
+        }
+
+        public IVertexResult until(IArgumentResult condition)
+        {
+            this.query += $".until({condition})";
+            return this;
+        }
+
+        public IVertexResult path()
+        {
+            this.query += ".path()";
+            return this;
+        }
+
+        public IRepeater repeat(IArgumentResult parameter)
+        {
+            this.query += $".repeat({parameter})";
+
+            return this;
+        }
+
+        public IEdgeResult where(IArgumentResult condition)
+        {
+            this.query += $".where({condition})";
+
+            return this;
+        }
+
+        IVertexResult IVertexResult.limit(int pathLimit)
+        {
+            this.query += $".limit({pathLimit})";
+            return this;
+        }
+
+        public IVertexResult times(int count)
+        {
+            this.query += $".times({count})";
+            return this;
+        }
+
+        public IVertexResult count(Scope scope = Scope.global)
+        {
+            if (scope == Scope.global)
+                this.query += ".count()";
+            else
+                this.query += $".count({scope})";
+            return this;
+        }
+
+        public IEdgeResult bothE(List<string> labels)
+        {
+            if (labels == null)
+                this.query += ".bothE()";
+            else
+            {
+                var labelsString = labels.FirstOrDefault();
+                foreach (var label in labels.Skip(1))
+                    labelsString += $",{label}";
+
+                this.query += $".bothE({labelsString})";
+            }
+
+            return this;
+        }
 
 
         #endregion
