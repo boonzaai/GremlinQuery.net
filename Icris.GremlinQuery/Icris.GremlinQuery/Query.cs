@@ -79,9 +79,9 @@ namespace Icris.GremlinQuery
         public IEdgeResult E(string id = null)
         {
             if (id != null)
-                this.query += $"E('{id}')";
+                this.query += $".E('{id}')";
             else
-                this.query += "E()";
+                this.query += ".E()";
             return this;
         }
 
