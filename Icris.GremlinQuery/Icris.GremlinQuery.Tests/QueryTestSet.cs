@@ -50,7 +50,24 @@ namespace Icris.GremlinQuery.Tests
                 "g.V(1).out('knows').has('age',gt(30)).values('name')",
                 g.V(1).@out("knows").has("age", gt(30)).values("name").ToString()
                 );
-
+            //Status that is true or false
+            Assert.AreEqual(
+                "g.V().has('status',true)",
+                g.V().has("status", true).ToString()
+            );
+            Assert.AreEqual(
+                "g.V().has('status',false)",
+                g.V().has("status", false).ToString()
+            );
+            //Add boolean property
+            Assert.AreEqual(
+                "g.V().property('status',true)",
+                g.V().property("status", true).ToString()
+            );
+            Assert.AreEqual(
+                "g.V().property('status',false)",
+                g.V().property("status", false).ToString()
+            );
         }
 
         [TestMethod]

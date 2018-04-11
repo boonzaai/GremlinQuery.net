@@ -24,6 +24,10 @@ namespace Icris.GremlinQuery
         /// </summary>
         IVertexResult has(string name, string value);
         /// <summary>
+        /// Removes traverser if element does not have given property with value
+        /// </summary>
+        IVertexResult has(string name, bool value);
+        /// <summary>
         /// Removes traverser if element does not satisfy the given comparison
         /// </summary>
         IVertexResult has(string name, Comparer comparer);
@@ -55,6 +59,10 @@ namespace Icris.GremlinQuery
         /// Adds property with value to the vertex
         /// </summary>
         IVertexResult property(string name, double value);
+        /// <summary>
+        /// Adds property with value to the vertex
+        /// </summary>
+        IVertexResult property(string name, bool value);
         /// <summary>
         /// Extracts the values of properties from an Element in the traversal stream
         /// </summary>

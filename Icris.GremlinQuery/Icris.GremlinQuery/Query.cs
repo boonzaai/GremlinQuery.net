@@ -166,6 +166,11 @@ namespace Icris.GremlinQuery
             this.query += $".has('{name}','{value}')";
             return this;
         }
+        IVertexResult IVertexResult.has(string name, bool value)
+        {
+            this.query += $".has('{name}',{value.ToString().ToLower()})";  // gremlin expects a boolean in value lowercase
+            return this;
+        }
         public IVertexResult has(string name, Comparer comparer)
         {
             this.query += $".has('{name}',{comparer})";
@@ -206,6 +211,11 @@ namespace Icris.GremlinQuery
         public IVertexResult property(string name, double value)
         {
             this.query += $".property('{name}',{value.ToString(CultureInfo.InvariantCulture)})";
+            return this;
+        }
+        public IVertexResult property(string name, bool value)
+        {
+            this.query += $".property('{name}',{value.ToString().ToLower()})";  // gremlin expects the boolean values to be in lowercase
             return this;
         }
 
