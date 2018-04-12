@@ -5,7 +5,7 @@
     <PackageId>GremlinQueryPackage</PackageId>
     <IncludeSymbols>True</IncludeSymbols>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>0.3.0</Version>
+    <Version>0.3.2</Version>
     <PackageProjectUrl>https://github.com/boonzaai/GremlinQuery.net</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/boonzaai/GremlinQuery.net/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
@@ -13,6 +13,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <Description>A strongly typed gremlin query DSL that seamlessly embeds itself within your code. Only generates correct Gremlin Query strings. The rest is up to you.</Description>
   </PropertyGroup>
 
   <ItemGroup>
