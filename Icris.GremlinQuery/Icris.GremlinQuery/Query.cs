@@ -171,6 +171,18 @@ namespace Icris.GremlinQuery
             this.query += $".has('{name}',{value.ToString().ToLower()})";  // gremlin expects a boolean in value lowercase
             return this;
         }
+        IVertexResult IVertexResult.has(string name, int value)
+        {
+            this.query += $".has('{name}',{value})";  // gremlin expects a boolean in value lowercase
+            return this;
+        }
+        IVertexResult IVertexResult.has(string name, double value)
+        {
+            this.query += $".has('{name}',{value.ToString(CultureInfo.InvariantCulture)})";  // gremlin expects a boolean in value lowercase
+            return this;
+        }
+
+
         public IVertexResult has(string name, Comparer comparer)
         {
             this.query += $".has('{name}',{comparer})";
