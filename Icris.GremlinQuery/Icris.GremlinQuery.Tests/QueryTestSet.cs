@@ -59,7 +59,17 @@ namespace Icris.GremlinQuery.Tests
                 "g.V().has('status',false)",
                 g.V().has("status", false).ToString()
             );
-            //Add boolean property
+            //Test Integer
+            Assert.AreEqual(
+                "g.V().has('status',1)",
+                g.V().has("status", (int)1).ToString()
+            );
+            //Test Double
+            Assert.AreEqual(
+                "g.V().has('status',1.5223)",
+                g.V().has("status", (double)1.5223).ToString()
+            );
+            //test boolean property
             Assert.AreEqual(
                 "g.V().property('status',true)",
                 g.V().property("status", true).ToString()
@@ -67,6 +77,15 @@ namespace Icris.GremlinQuery.Tests
             Assert.AreEqual(
                 "g.V().property('status',false)",
                 g.V().property("status", false).ToString()
+            );
+            //Test interger property
+            Assert.AreEqual(
+                "g.V().property('status',1)",
+                g.V().property("status", 1).ToString()
+            );
+            Assert.AreEqual(
+                "g.V().property('status',1)",
+                g.V().property("status", 1).ToString()
             );
         }
 
