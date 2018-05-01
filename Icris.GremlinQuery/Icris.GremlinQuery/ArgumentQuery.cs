@@ -21,11 +21,20 @@ namespace Icris.GremlinQuery
 
             return this;
         }
+        public IArgumentResult has(string property, string value)
+        {
+            query += $".has('{property}','{value}')";
+            return this;
+        }
 
         public IArgumentResult hasId(int id)
         {
             query += $".hasId({id})";
-
+            return this;
+        }
+        public IArgumentResult has(string property, int value)
+        {
+            query += $".has('{property}',{value})";
             return this;
         }
 

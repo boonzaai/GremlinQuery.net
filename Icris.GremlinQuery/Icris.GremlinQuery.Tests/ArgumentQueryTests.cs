@@ -34,5 +34,19 @@ namespace Icris.GremlinQuery.Tests
                 g.V("123").repeat(Argument.@out().simplePath()).until(Argument.hasId("5")).path().limit(1).ToString()
                 );
         }
+        [TestMethod]
+        public void ArgumentQuery_OtherVTest()
+        {
+            Assert.AreEqual("g.V('abc').outE('isType').where(otherV().hasId('def'))",
+            g.V("abc").outE("isType").where(Argument.otherV().hasId("def")).ToString()
+            );
+        }
+        [TestMethod]
+        public void ArgumentQuery_OtherV2Test()
+        {
+            Assert.AreEqual("g.V('abc').outE('isType').where(otherV().has('id','def'))",
+            g.V("abc").outE("isType").where(Argument.otherV().has("id","def")).ToString()
+            );
+        }
     }
 }

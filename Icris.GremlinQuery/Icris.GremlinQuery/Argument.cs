@@ -17,6 +17,14 @@ namespace Icris.GremlinQuery
         {
             return new ArgumentQuery().hasId(id);
         }
+        public static IArgumentResult has(string property, int value)
+        {
+            return new ArgumentQuery().has(property, value);
+        }
+        public static IArgumentResult has(string property, string value)
+        {
+            return new ArgumentQuery().has(property, value);
+        }
 
         public static IArgumentResult hasLabel(string label)
         {

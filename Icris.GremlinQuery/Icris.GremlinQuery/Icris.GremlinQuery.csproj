@@ -5,7 +5,7 @@
     <PackageId>GremlinQueryPackage</PackageId>
     <IncludeSymbols>True</IncludeSymbols>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>0.3.2</Version>
+    <Version>0.3.3</Version>
     <PackageProjectUrl>https://github.com/boonzaai/GremlinQuery.net</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/boonzaai/GremlinQuery.net/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

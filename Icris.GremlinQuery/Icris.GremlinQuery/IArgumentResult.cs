@@ -24,6 +24,21 @@ namespace Icris.GremlinQuery
         /// <returns></returns>
         IArgumentResult hasId(int id);
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        IArgumentResult has(string property, int value);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        IArgumentResult has(string property, string value);
+
+        /// <summary>
         /// Remove the traverser if its element does not have the label
         /// </summary>
         IArgumentResult hasLabel(string label);
